@@ -16,7 +16,7 @@ class TarotCardNeuron(nn.Module):
         self.center = nn.Parameter(torch.zeros(embedding_dim))
 
         # Трактовки на сфере вокруг центра
-        self.tractovki = nn.Parameter(self._init_tractovki())
+        self.tractovki = nn.Parameter(F.normalize(self._init_tractovki(), dim=-1) * radius)
 
     def _init_tractovki(self):
         indices = torch.arange(0, self.num_tractovki, dtype=torch.float) + 0.5

@@ -2,7 +2,7 @@ import torch
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-def visualize_tarot_sphere(num_points=500, embedding_dim=64, active_index=123, radius=5.0, card_name="The Fool"):
+def visualize_tarot_sphere(num_points=500, embedding_dim=64, active_index=123, radius=5.0, card_name="The Fool", show=True):
     """
     Визуализирует полную 3D-сферу трактовок карты Таро.
 
@@ -53,4 +53,6 @@ def visualize_tarot_sphere(num_points=500, embedding_dim=64, active_index=123, r
     ax.set_title(f"Сфера трактовок: {card_name}")
     ax.legend()
     plt.tight_layout()
-    plt.show()
+    if show:
+        plt.show()
+    return fig

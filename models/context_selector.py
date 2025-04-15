@@ -48,3 +48,18 @@ class ContextSelector(nn.Module):
         # Генерируем итоговый контекстный вектор для целевой карты
         context_vector = torch.matmul(attn_weights, values)  # (1, D)
         return context_vector.squeeze(0)  # Возвращаем вектор без лишнего измерения
+
+    def select_context(self, input_contexts: dict[str, torch.Tensor]):
+        """
+        Process all cards in the reading to generate context vectors.
+
+        Args:
+            input_contexts: Dictionary mapping card names to their embeddings
+
+        Returns:
+            Dictionary of context vectors for each card
+        """
+        context_vectors = {}
+        for target_card in input_contexts:
+            context_vectors[target_card] = self.forward(target_card, input_contexts)
+        return context_vectors
