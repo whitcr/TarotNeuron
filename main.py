@@ -1,6 +1,5 @@
 import torch
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+
 from models.context_selector import ContextSelector
 from models.tarot_neuron import TarotNeuronNetwork
 from utils.visualizer import visualize_tarot_sphere
